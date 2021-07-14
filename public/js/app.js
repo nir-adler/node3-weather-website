@@ -1,7 +1,9 @@
+
 const weatherForm = document.querySelector('form')
 const address = weatherForm.querySelector('input')
 const messageOne = document.querySelector('#massage-1')
 const messageTwo = document.querySelector('#massage-2')
+
 
 
 weatherForm.addEventListener('submit', (e) => {
