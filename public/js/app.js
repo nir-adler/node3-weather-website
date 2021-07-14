@@ -4,11 +4,11 @@ const address = weatherForm.querySelector('input')
 const messageOne = document.querySelector('#massage-1')
 const messageTwo = document.querySelector('#massage-2')
 
-
+// const server =  || 'http://127.0.0.1:3000'
 
 weatherForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    const url = `http://127.0.0.1:3000/weather?address=${address.value}`
+    const url = `/weather?address=${address.value}`
     try {
         messageOne.textContent='loading...'
         messageTwo.textContent=''
