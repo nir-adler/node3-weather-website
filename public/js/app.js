@@ -1,31 +1,31 @@
+const form = document.querySelector("form")
+const addressInput = document.querySelector("form input")
 
-const weatherForm = document.querySelector('form')
-const address = weatherForm.querySelector('input')
-const messageOne = document.querySelector('#massage-1')
-const messageTwo = document.querySelector('#massage-2')
+const massageOne = document.querySelector('#massage-1')
+const massageTwo = document.querySelector('#massage-2')
 
-// const server =  || 'http://127.0.0.1:3000'
-
-weatherForm.addEventListener('submit', (e) => {
+form.addEventListener('submit', (e) => {
     e.preventDefault()
-    const url = `/weather?address=${address.value}`
+
+    massageOne.textContent='Loading...'
+    massageTwo.textContent=''
     try {
-        messageOne.textContent='loading...'
-        messageTwo.textContent=''
-        fetch(url)
-            .then((response) => {
-                response.json().then(({error, temperature, rain, location}) => {
-                    if (error) {
-                        messageOne.textContent = 'error'
-                        messageTwo.textContent = error.toString()
-                    } else {
-                        messageOne.textContent = location
-                        messageTwo.textContent = 'Temperature are:' + temperature + ', Chance of rain are:' + rain + '%'
-                    }
-                })
+        fetch(`/weather?address=${addressInput.value}`)
+            .then(response => response.json())
+            .then(({error, location, forcast} = {}) => {
+                if (error) {
+                    massageOne.textContent='error'
+                    massageTwo.textContent=error
+                }else{
+                    massageOne.textContent=location
+                    massageTwo.textContent=forcast
+                }
+
             })
     } catch (e) {
-        messageTwo.innerHTML=e.toString()
+        massageOne.textContent='error'
+        massageTwo.textContent=e
     }
-
 })
+
+

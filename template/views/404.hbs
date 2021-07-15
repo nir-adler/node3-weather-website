@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Title</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="icon" href="/img/weather.png">
-    <title>Title</title>
 </head>
 <body>
-{{>header}}
-    <p>This site was created by andrew mead. It uses data from mapbox.com</p>
-    <img src="/img/dragon.jpg">
+<div class="main-contect">
+    {{>header}}
+    <p>{{error}}</p>
+</div>
 {{>footer}}
 </body>
 </html>
