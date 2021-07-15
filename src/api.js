@@ -1,12 +1,17 @@
 const request = require('request')
 const chalk = require('chalk')
 
+
+
 const weatherForcast = (latitude,longitude,callback) => {
     const url = `http://api.weatherstack.com/current?access_key=c7dea350358f745d2cd805aa521688e8&query=${latitude},${longitude}`
     request({url, json: true}, (error, {body} = {}) => {
+        console.log(body)
         if (error) {
             console.log(error)
             callback(error,undefined)
+        }else if(body.success===false){
+            callback(body.error.info,undefined)
         } else {
             const forcast = `It is currently ${body.current.temperature} degreed out. There is a ${body.current.precip}% chance of rain. new data`
             callback(undefined,forcast)
