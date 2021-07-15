@@ -8,7 +8,7 @@ const weatherForcast = (latitude,longitude,callback) => {
             console.log(error)
             callback(error,undefined)
         } else {
-            const forcast = `It is currently ${body.current.temperature} degreed out. There is a ${body.current.precip}% chance of rain.`
+            const forcast = `It is currently ${body.current.temperature} degreed out. There is a ${body.current.precip}% chance of rain. new data`
             callback(undefined,forcast)
         }
     })
